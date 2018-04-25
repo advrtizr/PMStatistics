@@ -19,21 +19,16 @@ public class DBConnection {
         StrictMode.setThreadPolicy(policy);
 
         Connection connection = null;
-        String connectionURL = null;
+
         try{
             Class.forName(Constants.CLASS_NAME);
-            connectionURL = Constants.CONNECTION_URL +
-                    Constants.IP_ADDRESS +
-                    ";databasename=" + Constants.DATABASE_NAME +
-                    ";user=" + Constants.USER_NAME +
-                    ";password=" + Constants.PASSWORD + ";";
-            connection = DriverManager.getConnection(connectionURL);
+            connection = DriverManager.getConnection(Constants.CONNECTION_URL, Constants.USER_NAME, Constants.PASSWORD);
         }catch (SQLException e){
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "SQLException " + e.getMessage());
         }catch(ClassNotFoundException e){
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "ClassNotFoundException " + e.getMessage());
         }catch (Exception e){
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "Exception " + e.getMessage());
         }
         return connection;
     }
