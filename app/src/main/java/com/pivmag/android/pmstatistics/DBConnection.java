@@ -22,7 +22,7 @@ public class DBConnection {
 
         try{
             Class.forName(Constants.CLASS_NAME);
-            connection = DriverManager.getConnection(Constants.CONNECTION_URL, Constants.USER_NAME, Constants.PASSWORD);
+            connection = DriverManager.getConnection(Constants.CONNECTION_URL);
         }catch (SQLException e){
             Log.e(TAG, "SQLException " + e.getMessage());
         }catch(ClassNotFoundException e){
